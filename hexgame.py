@@ -4,25 +4,33 @@ import array
 from sys import stdout
 from collections import namedtuple
 from math import *
-from time import sleep
 
 # Introduction to the game-------------------------------------------------------------------------------------------------------------
-"""This is a two player Hex Game. In this game the player has to build a bridge from his side to his other side of the hex paralellogram, players take turn alternatively,the one who builds first wins.A player can place his stone at any empty place.As soon as an unbroken chain of stones connects any two opposite sides of the board, the game ends declaring the winner of the game. This game was invented by Piet Hein. The game doesn't draw in any case proved by John Nash an independent inventor of this game.
+"""This is a two player Hex Game. In this game the player has to build a bridge from his side to his other side of
+the hex paralellogram, players take turn alternatively,the one who builds first wins.A player can place his stone at
+
+any empty place.As soon as an unbroken chain of stones connects two opposite sides of the board, the game ends
+declaring the winner of the game. This game was invented by Piet Hein. It is a win or lose game proved by
+
+John Nash an independent inventor of this game.
 """
 
 #Some Implementation and Algorithm Details----------------------------------------------------------------------------------------------
 """The game is implemented as Union Find and Union Join Algorithm.
-   1.   An empty place is denoted as 0, Player 1's stone is denoted by 1, Player 2's stone is deonted by 2.
-   2.	If the player places a stone at filled place, give the warning "Cann't Place here!!".
-   3.   If the Player places the stone at an empty place:
-   			a. if the current place doesn't join any two different components, make the current place a new component.
-   			b. if it joins two components:
-   				a1.	if both the components is joined with the top layer, mark the par of current place as the par of any of the components.
-   				a2. if one of the components is joined with the top layer, mark the par if cur place as par of layer joined with top layer.
-   				a3. if none of them is joined with the top layer, mark the par of cur node as par of any of the components.
-   				a4. check the case if present place is the top node.
-   			c.  As soon as the parent of the nth place is detected as the first place game ends.
+
+1. Intitally every node is the parent of itself.
+2. A Cmponent will have one parent . Priority of deciding the parent is done by following steps:
+
+a. If the node at top or bottom layer of the board is not available as a parent , choose any parent that is available.
+b. But if the node at top or bottom layer is available choose it , if more than one of them are available choose any.
+
+3. In case when greater than equal to one parent is available from top layer and simultaneously from bottom layer,
+bridge is formed and game is over.
+
 """
+
+
+
 
 GRID_SIZE = 7
 IMG_SIZE = 35
