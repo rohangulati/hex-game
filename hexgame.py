@@ -19,7 +19,7 @@ John Nash an independent inventor of this game.
 """The game is implemented as Union Find and Union Join Algorithm.
 
 1. Intitally every node is the parent of itself.
-2. A Cmponent will have one parent . Priority of deciding the parent is done by following steps:
+2. A Component will have one parent . Priority of deciding the parent is done by following steps:
 
 a. If the node at top or bottom layer of the board is not available as a parent , choose any parent that is available.
 b. But if the node at top or bottom layer is available choose it , if more than one of them are available choose any.
